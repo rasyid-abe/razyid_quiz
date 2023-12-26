@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Row start -->
+<div class="row">
+    {% for i in data.subjects %}
+        <div class="col-lg-3 col-sm-4 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{i.subject}}</h3>
+                    <p>{{i.description}}</p>
+                    {% if i.is_taken > 0 %}
+                        <a href="/quiz/result/{{i.id}}" class="btn btn-lg btn-secondary">View Result</a>
+                    {% else %}
+                        <a href="/quiz/take/{{i.id}}" class="btn btn-lg btn-success">Take a Quiz</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Row end -->
+
+
+{% endblock %}

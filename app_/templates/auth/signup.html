@@ -1,0 +1,45 @@
+{% extends 'auth.html' %}
+
+{% block content %}
+<div class="container">
+
+    <form action="" method="POST">
+        <div class="row justify-content-md-center">
+            <div class="col-xl-5 col-md-6 col-sm-12">
+                <div class="login-screen">
+                    <div class="login-box">
+                        <a href="#" class="login-logo">
+                            Rasyid Quiz
+                        </a>
+                        <h5>Welcome,<br />Create your Admin Account.</h5>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Fullname" name="fullname" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email Address" name="email" required />
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="Password" name="password" required />
+                                <input type="password" class="form-control" placeholder="Conform" name="confirm" required />
+                            </div>
+                            <small id="passwordHelpInline" class="text-muted">
+                                Password must be 8-20 characters long.
+                            </small>
+                        </div>
+                        <div class="actions">
+                            <button type="submit" class="btn btn-primary btn-block">Signup</button>
+                        </div>
+                        <hr>
+                        <div class="m-0 text-center">
+                            <span class="additional-link mb-2">Already have an account?</span>
+                            <a href="/" class="btn btn-block btn-secondary">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

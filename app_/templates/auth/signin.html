@@ -1,0 +1,36 @@
+{% extends 'auth.html' %}
+
+{% block content %}
+<div class="container">
+
+    <form action="" method="POST">
+        <div class="row justify-content-md-center">
+            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+                <div class="login-screen">
+                    <div class="login-box">
+                        <a href="#" class="login-logo">
+                            Rasyid Quiz
+                        </a>
+                        <h5>Welcome back,<br />Please Login to your Account.</h5>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email Address" name="email" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" name="password" required />
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info btn-block">Login</button><br>
+                        </div>
+                        <hr>
+                        <div class="m-0 text-center">
+                            <span class="additional-link mb-2">No account?</span>
+                            <a href="/sign-up" class="btn btn-secondary btn-block">Signup</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

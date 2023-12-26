@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+	{% for i in data.question %}
+		<div class="col-lg-6 col-12">
+			{% if data.answer[loop.index0].answer == i.answer %}
+				<div class="card bg-success text-white">
+					<div class="card-body">
+						<p>{{i.question}}</p>
+						<ul>
+							{% for j in i.arr_option %}
+								<li>&#9900; {{j}}</li>
+							{% endfor %}
+						</ul>
+						<hr>
+						<p><b>Your Answer:</b> {{data.answer[loop.index0].answer}}</p>
+						<p><b>Correct Answer:</b> {{i.answer}}</p>
+						<p><b>Explanation:</b> {{i.answer_explanation}}</p>
+					</div>
+				</div>
+				{% else %}
+				<div class="card bg-danger text-white">
+					<div class="card-body">
+						<p>{{i.question}}</p>
+						<ul>
+							{% for j in i.arr_option %}
+								<li>&#9900; {{j}}</li>
+							{% endfor %}
+						</ul>
+						<hr>
+						<p><b>Your Answer:</b> {{data.answer[loop.index0].answer}}</p>
+						<p><b>Correct Answer:</b> {{i.answer}}</p>
+						<p><b>Explanation:</b> {{i.answer_explanation}}</p>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}

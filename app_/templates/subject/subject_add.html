@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Row start -->
+
+<div class="col-sm-8">
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">{{data.title}}</div>
+		</div>
+		<div class="card-body">
+
+			<form action="" method="POST">
+
+				<div class="form-group row">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Subject</label>
+					<div class="col-sm-10">
+						<input type="text" name="subject" class="form-control" id="colFormLabel">
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="colFormLabel" class="col-sm-2 col-form-label">Description</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" name="description"></textarea>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Save</button>
+				<a href="/subject" class="btn btn-secondary">Back</a>
+			</form>
+
+		</div>
+	</div>
+</div>
+<!-- Row end -->
+
+{% endblock %}

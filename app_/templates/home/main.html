@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<!-- Row start -->
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/datatables/dataTables.bs4.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/datatables/dataTables.bs4-custom.css') }}">
+
+<div class="row gutters">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				<form action="" class="form-inline" method="POST">
+					<select class="form-control" name="area">
+						{% for a in forcast.area %}
+							{% if a==forcast.title %}
+								<option value="{{a}}" selected>{{a}}</option>
+							{% else %}
+								<option value="{{a}}">{{a}}</option>
+							{% endif %}
+						{% endfor %}
+					  </select>
+					  <button type="submit" class="btn btn-success">Process</button>
+				</form>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					{% for weather in forcast.weather %}
+					<div class="col-sm-4 col-12">
+						<div class="card">
+							<div class="card-header text-center mt-2">
+								<h5>
+									{{forcast.headtime[loop.index0]}}
+								</h5>
+								<p>Max Temperature: {{forcast.temp_max[loop.index0]}} C</p>
+								<p>Min Temperature: {{forcast.temp_max[loop.index0]}} C</p>
+								<p></p>
+							</div>
+							<div class="card-body">
+								<div class="row">
+								{% for w in weather %}
+									<div class="col-sm-3">
+										<div class="card">
+											<div class="card-header text-center">
+												<b>{{forcast.clock[loop.index0]}}</b>
+											</div>
+											<div class="card-body d-flex align-items-center justify-content-center">
+												<img src="../../static/weather/w_{{w}}.png" width="40" height="40" alt="">
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="card-footer">
+				Source: <a href="https://data.bmkg.go.id/prakiraan-cuaca/" class="text-info"><b>BMKG</b></a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-2 col-sm-4 col-12">
+		<div class="hospital-tiles">
+			<h1 class="text-info"><i class="icon-assignment nav-icon"></i></h1>
+			<h4>Total Subject</h4>
+			<h3>{{data.total_subject}}</h3>
+		</div>
+	</div>
+	<div class="col-lg-2 col-sm-4 col-12">
+		<div class="hospital-tiles">
+			<h1 class="text-info"><i class="icon-border_color nav-icon"></i></h1>
+			<h4>Total Question</h4>
+			<h3>{{data.total_question}}</h3>
+		</div>
+	</div>
+	<div class="col-lg-2 col-sm-4 col-12">
+		<div class="hospital-tiles">
+			<h1 class="text-info"><i class="icon-users nav-icon"></i></h1>
+			<h4>Total User</h4>
+			<h3>{{data.total_user}}</h3>
+		</div>
+	</div>
+	<div class="col-lg-6 col-sm-12 col-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Leaderboard</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="fixedHeader" class="table">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Name</th>
+								<th>Subject</th>
+								<th>Score</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in data.score %}
+								<tr>
+									<td>{{loop.index0 + 1}}</td>
+									<td>{{i.name}}</td>
+									<td>{{i.subject}}</td>
+									<td>{{i.score}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{{ url_for('static', filename='vendor/datatables/dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/custom/custom-datatables.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/custom/fixedHeader.js') }}"></script>
+<!-- Row end -->
+
+{% endblock %}

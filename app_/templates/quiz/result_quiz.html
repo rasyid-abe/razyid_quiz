@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header">
+				CONGRATULATION
+			</div>
+			<div class="card-body">
+				<h3>You have finished the quis {{data.score.subject}}</h3>
+				<h5>Your Score</h5>
+				<h1>{{data.score.score}}</h1>
+				<a href="/quiz/result/{{data.subject_id}}" class="btn btn-lg btn-secondary">View Result</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

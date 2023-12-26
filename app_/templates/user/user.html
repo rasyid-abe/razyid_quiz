@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/datatables/dataTables.bs4.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/datatables/dataTables.bs4-custom.css') }}">
+
+<div class="table-container">
+	<h5 class="table-title">{{data.title}}</h5>
+	
+	<div class="table-responsive">
+		<table id="fixedHeader" class="table">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Name</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for i in users %}
+                    <tr>
+                        <td>{{loop.revindex}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.email}}</td>
+                    </tr>				
+                {% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script src="{{ url_for('static', filename='vendor/datatables/dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/custom/custom-datatables.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/datatables/custom/fixedHeader.js') }}"></script>
+
+<!-- Row end -->
+
+{% endblock %}

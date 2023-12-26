@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Meta -->
+		<meta name="description" content="Responsive Bootstrap Dashboards">
+		<meta name="author" content="Bootstrap Gallery">
+		<link rel="shortcut icon" href="img/favicon.svg" />
+
+		<!-- Title -->
+		<title>Rasyid Quiz - Login</title>
+
+		<!-- *************
+			************ Common Css Files *************
+			************ -->
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+		<!-- Master CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.min.css') }}">
+        
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.toast.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.toast.js') }}"></script>
+	</head>
+
+	<body class="authentication">
+
+        <script type="text/javascript">
+            function toast_act(heading, message, status, time=5000) {
+                if (message != '')
+                    $.toast({
+                        heading: heading,
+                        text: message,
+                        showHideTransition: 'slide',
+                        position: 'top-right',
+                        icon: status,
+                        hideAfter: time
+                    })
+            }
+        </script>
+    
+        {% if data.status %}
+            <script type="text/javascript">
+                toast_act( '{{data.heading}}', '{{data.message}}', '{{data.status}}' )
+            </script>
+        {% endif %}
+
+		{% block content %}
+        {% endblock %}
+
+	</body>
+
+</html>
